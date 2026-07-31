@@ -1,0 +1,162 @@
+/* OMERO GYM - custom theme on top of Bootstrap 5 (dark mode).
+   Only the bits Bootstrap can't do out of the box live here. */
+
+/* brand red replaces Bootstrap's blue primary */
+:root,
+[data-bs-theme="dark"] {
+  --bs-primary: #e02434;
+  --bs-primary-rgb: 224, 36, 52;
+  --bs-body-bg: #0e0e10;
+  --bs-body-color: #e9e9ec;
+  --bs-link-color-rgb: 240, 68, 82;
+  --bs-link-hover-color-rgb: 240, 68, 82;
+  --brand: #e02434;
+  --brand-soft: #f04452;
+  --brand-dark: #b31b29;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* red buttons */
+.btn-primary {
+  --bs-btn-bg: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand-soft);
+  --bs-btn-hover-border-color: var(--brand-soft);
+  --bs-btn-active-bg: var(--brand-dark);
+  --bs-btn-active-border-color: var(--brand-dark);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-color: #fff;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--brand-soft);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand);
+  --bs-btn-hover-border-color: var(--brand);
+  --bs-btn-hover-color: #fff;
+}
+.text-primary { color: var(--brand-soft) !important; }
+
+/* display headings use a bolder condensed font */
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6,
+.brand-font {
+  font-family: "Oswald", "Inter", sans-serif;
+  letter-spacing: .5px;
+}
+
+/* logo wordmark in the navbar */
+.navbar-brand {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.navbar-brand .dot { color: var(--brand); }
+
+/* small navbar shadow once you scroll down (toggled from main.js) */
+.navbar {
+  background-color: rgba(14, 14, 16, .85);
+  backdrop-filter: blur(8px);
+  transition: box-shadow .2s ease, background-color .2s ease;
+}
+.navbar.scrolled {
+  box-shadow: 0 6px 24px -12px rgba(0, 0, 0, .8);
+  background-color: rgba(14, 14, 16, .97);
+}
+
+/* hero section */
+.hero {
+  position: relative;
+  padding: 7rem 0 6rem;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(224, 36, 52, .22), transparent 45%),
+    linear-gradient(180deg, #161618, #0e0e10);
+  overflow: hidden;
+}
+.hero h1 { line-height: 1.05; }
+
+/* faint "STRENGTH" style word behind sections */
+.section-watermark {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .04);
+  font-size: clamp(3rem, 12vw, 9rem);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* class / feature cards */
+.card {
+  background-color: #17171a;
+  border: 1px solid rgba(255, 255, 255, .07);
+  transition: transform .2s ease, border-color .2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(224, 36, 52, .5);
+}
+
+/* price tag on class cards */
+.price-tag {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* category filter buttons */
+.filter-btn.active {
+  background-color: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+/* carousel slides use a dark gradient so white text stays readable */
+.carousel-slide {
+  height: 440px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.carousel-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .8), rgba(0, 0, 0, .25));
+}
+.carousel-caption-left {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* footer */
+footer {
+  background-color: #0a0a0b;
+  border-top: 1px solid rgba(255, 255, 255, .07);
+}
+
+/* simple fade-in used by the scroll animation in main.js */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* dashboard reservation id */
+.res-id {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--brand-soft);
+}
+
+/* give fixed navbar some breathing room above page content */
+.page-top { padding-top: 6rem; }
