@@ -1,157 +1,65 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OMERO GYM - Classes &amp; Sessions</title>
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0a0b" />
+<title>OMERO GYM — Classes &amp; Sessions</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">OMERO<span class="dot">.</span>GYM</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="classes.html">Classes</a></li>
-          <li class="nav-item"><a class="nav-link" href="book.html">Book a Slot</a></li>
-          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+<body data-page="classes">
+  <div class="app">
+    <header>
+      <nav class="nav">
+        <a class="logo" href="index.html">
+          <span class="logo-badge"><svg width="18" height="18" viewBox="0 0 512 512" fill="#fff"><rect x="176" y="236" width="160" height="40" rx="20"/><rect x="140" y="196" width="44" height="120" rx="16"/><rect x="328" y="196" width="44" height="120" rx="16"/><rect x="96" y="216" width="40" height="80" rx="14"/><rect x="376" y="216" width="40" height="80" rx="14"/></svg></span>
+          <span class="logo-text">OMERO <span class="r">GYM</span></span>
+        </a>
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link active" href="classes.html">Classes</a></li>
+          <li><a class="nav-link" href="book.html">Book a Slot</a></li>
+          <li><a class="nav-link" href="dashboard.html">My Workouts</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
-        <div class="d-flex gap-2 ms-lg-3">
-          <a href="login.html" class="btn btn-outline-light btn-sm">Login</a>
-          <a href="register.html" class="btn btn-primary btn-sm">Join Now</a>
+        <div class="nav-right">
+          <a class="btn btn-ghost btn-sm" href="login.html">Login</a>
+          <a class="btn btn-primary btn-sm" href="register.html">Join Now</a>
         </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      </nav>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a class="active" href="classes.html">Classes</a>
+        <a href="book.html">Book a Slot</a>
+        <a href="dashboard.html">My Workouts</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Join Now</a>
       </div>
-    </div>
-  </nav>
+    </header>
 
-  <main class="page-top">
-    <section class="py-5">
-      <div class="container">
-        <div class="text-center mb-4 reveal">
-          <h1 class="display-5 fw-bold">Classes &amp; Sessions</h1>
-          <p class="text-secondary">Filter by type and book the slot that fits your routine.</p>
-        </div>
+    <main>
+      <div class="shell">
+        <section class="hero fade">
+          <span class="eyebrow">OMERO GYM — Session Catalog</span>
+          <h1>PICK YOUR SLOT.<br /><span class="r">OWN THE FLOOR.</span></h1>
+          <p>Book premium floor access, group classes, and personal training sessions at OMERO GYM.</p>
+          <div class="filters" id="filters"></div>
+        </section>
 
-        <!-- category filter buttons (JS filters the cards) -->
-        <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
-          <button class="btn btn-outline-light filter-btn active" data-filter="all">All</button>
-          <button class="btn btn-outline-light filter-btn" data-filter="floor">Floor Access</button>
-          <button class="btn btn-outline-light filter-btn" data-filter="classes">Group Classes</button>
-          <button class="btn btn-outline-light filter-btn" data-filter="personal">Personal Training</button>
-        </div>
-
-        <div class="row g-4">
-          <!-- floor access -->
-          <div class="col-md-6 col-lg-4" data-category="floor">
-            <div class="card h-100 p-4">
-              <span class="badge text-bg-secondary align-self-start mb-2">Floor Access</span>
-              <h5>Peak Hours Floor Pass</h5>
-              <p class="text-secondary small">Full access to weights and cardio during peak evening hours.</p>
-              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
-                <span class="price-tag">LKR 1,500</span>
-                <a href="book.html" class="btn btn-primary btn-sm">Book</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4" data-category="floor">
-            <div class="card h-100 p-4">
-              <span class="badge text-bg-secondary align-self-start mb-2">Floor Access</span>
-              <h5>Off-Peak Floor Pass</h5>
-              <p class="text-secondary small">Quieter daytime access to every rack and machine.</p>
-              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
-                <span class="price-tag">LKR 1,000</span>
-                <a href="book.html" class="btn btn-primary btn-sm">Book</a>
-              </div>
-            </div>
-          </div>
-          <!-- group classes -->
-          <div class="col-md-6 col-lg-4" data-category="classes">
-            <div class="card h-100 p-4">
-              <span class="badge text-bg-secondary align-self-start mb-2">Group Class</span>
-              <h5>High Intensity HIIT</h5>
-              <p class="text-secondary small">Fast circuits that mix cardio and strength for real results.</p>
-              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
-                <span class="price-tag">LKR 2,500</span>
-                <a href="book.html" class="btn btn-primary btn-sm">Book</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4" data-category="classes">
-            <div class="card h-100 p-4">
-              <span class="badge text-bg-secondary align-self-start mb-2">Group Class</span>
-              <h5>Spin Cycle</h5>
-              <p class="text-secondary small">Beat-driven indoor cycling for endurance and fat burn.</p>
-              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
-                <span class="price-tag">LKR 2,000</span>
-                <a href="book.html" class="btn btn-primary btn-sm">Book</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4" data-category="classes">
-            <div class="card h-100 p-4">
-              <span class="badge text-bg-secondary align-self-start mb-2">Group Class</span>
-              <h5>Yoga Flow</h5>
-              <p class="text-secondary small">Mobility and recovery to balance out your heavy days.</p>
-              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
-                <span class="price-tag">LKR 1,800</span>
-                <a href="book.html" class="btn btn-primary btn-sm">Book</a>
-              </div>
-            </div>
-          </div>
-          <!-- personal training -->
-          <div class="col-md-6 col-lg-4" data-category="personal">
-            <div class="card h-100 p-4">
-              <span class="badge text-bg-secondary align-self-start mb-2">Personal Training</span>
-              <h5>Elite Power &amp; Strength</h5>
-              <p class="text-secondary small">One-on-one coaching focused on lifting form and progression.</p>
-              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
-                <span class="price-tag">LKR 5,000</span>
-                <a href="book.html" class="btn btn-primary btn-sm">Book</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- cards rendered by main.js -->
+        <div id="sessionSections"></div>
       </div>
-    </section>
-  </main>
+    </main>
 
-  <footer class="pt-5 pb-4 mt-4">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <h5 class="navbar-brand">OMERO<span class="dot">.</span>GYM</h5>
-          <p class="text-secondary small">Book gym floor time, classes and personal training online.</p>
-        </div>
-        <div class="col-md-4">
-          <h6 class="text-uppercase">Quick Links</h6>
-          <ul class="list-unstyled small">
-            <li><a class="link-secondary" href="classes.html">Classes</a></li>
-            <li><a class="link-secondary" href="book.html">Book a Slot</a></li>
-            <li><a class="link-secondary" href="dashboard.html">Dashboard</a></li>
-            <li><a class="link-secondary" href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h6 class="text-uppercase">Visit Us</h6>
-          <p class="text-secondary small mb-1"><i class="bi bi-geo-alt me-2"></i>Mihintale, Anuradhapura</p>
-          <p class="text-secondary small mb-1"><i class="bi bi-telephone me-2"></i>+94 25 000 0000</p>
-          <p class="text-secondary small"><i class="bi bi-envelope me-2"></i>hello@omerogym.lk</p>
-        </div>
-      </div>
-      <hr class="border-secondary" />
-      <p class="text-center text-secondary small mb-0">&copy; <span class="js-year"></span> OMERO GYM. Built for ICT 1209 Web Technologies.</p>
-    </div>
-  </footer>
+    <footer><div class="footer-inner">&copy; <span class="js-year"></span> OMERO GYM &middot; Discipline today, strength tomorrow.</div></footer>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
